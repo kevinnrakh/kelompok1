@@ -10,36 +10,38 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
     />
   </head>
-  <body>
-    <header>
-      <nav
-        class="fixed w-full flex justify-between items-center p-6 bg-[#242424] z-50"
-      >
-        <div><span class="text-2xl font-bold text-white">N</span><span class="text-xl font-bold text-blue-200">PD</span></div>
-        <button id="menu-btn" class="md:hidden text-white">
+  <body class="">
+    <div class="container">
+
+        <header>
+            <nav
+            class="fixed w-full flex justify-between items-center p-6 bg-[#242424] z-50"
+            >
+            <div><span class="text-2xl font-bold text-white">N</span><span class="text-xl font-bold text-red-400">PD</span></div>
+            <button id="menu-btn" class="md:hidden text-white">
           <span class="material-symbols-outlined">menu</span>
         </button>
         <ul class="hidden md:flex gap-6 text-white">
-          <li><a href="#home" class="hover:text-[#ff4d00]">Home</a></li>
-          <li><a href="#about" class="hover:text-[#ff4d00]">Tentang</a></li>
+            <li><a href="#home" class="hover:text-[#ff4d00]">Home</a></li>
+            <li><a href="#about" class="hover:text-[#ff4d00]">Tentang</a></li>
           <li>
-            <a href="#pesan" class="hover:text-[#ff4d00]">Pesan</a>
-          </li>
-          <li><a href="#menu" class="hover:text-[#ff4d00]">Menu</a></li>
-          <li><a href="#contact" class="hover:text-[#ff4d00]">Kontak</a></li>
-          <li>
-            <a
+              <a href="#pesan" class="hover:text-[#ff4d00]">Pesan</a>
+            </li>
+            <li><a href="#menu" class="hover:text-[#ff4d00]">Menu</a></li>
+            <li><a href="#contact" class="hover:text-[#ff4d00]">Kontak</a></li>
+            <li>
+                <a
               href="data.html"
               class="py-1 px-6 bg-[#ff4d00] text-[#ffffff] hover:bg-[#e64500] rounded-lg"
               >Login</a
-            >
+              >
           </li>
         </ul>
-      </nav>
-      <div
-        id="mhenu"
-        class="hidden fixed top-[55px] left-0 w-full bg-[#40513B] text-white px-6 py-4 md:hidden z-50"
-      >
+    </nav>
+    <div
+    id="mhenu"
+    class="hidden fixed top-[55px] left-0 w-full bg-[#40513B] text-white px-6 py-4 md:hidden z-50"
+    >
         <ul class="flex flex-col gap-4">
         <li><a href="#home" class="hover:text-[#ff4d00]">Home</a></li>
           <li><a href="#about" class="hover:text-[#ff4d00]">Tentang</a></li>
@@ -48,11 +50,22 @@
           <li><a href="#contact" class="hover:text-[#ff4d00]">Kontak</a></li>
           <li><a href="data.html" class="hover:text-[#ff4d00]">Login</a></li>
         </ul>
-      </div>
-    </header>
-    <section id="hero">
-        <h1>selamat welcome datang</h1>
+    </div>
+</header>
+
+<main>
+
+    <section class="pt-15 text-center h-[100vh]  text-white flex flex-col justify-center px-20 bg-[url(https://www.panorama-destination.com/wp-content/uploads/2024/10/Banner-Welcome-To-PDES1.jpg)] bg-cover gap-5" id="hero">
+        <h1 class="text-3xl font-extrabold">selamat welcome datang</h1>
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque nobis eius tenetur itaque adipisci blanditiis, dolorum, soluta quis aut iure saepe delectus quae similique cum quia harum deleniti cumque? Blanditiis!</p>
+        <a href="#menu">
+            <button type="button" class="outline-none bg-red-500 opacity-70 p-3 rounded-lg hover:opacity-100 hover:text-white hover:-translate-y-1 shadow-xl transition hover:cursor-pointer">Lihat menu kami</button>
+        </a>
     </section>
+    
+</main>
+
+</div>
   </body>
-</html>
+  </html>
+  
