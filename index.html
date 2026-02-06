@@ -6,7 +6,344 @@
     <title>Nasi Padang Dahsyat</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 p-10">
 
+<section class="py-12 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold mb-6">Popular Drinks</h2>
+
+    <!-- SCROLL CONTAINER -->
+    <div class="flex gap-6 overflow-x-auto pb-4
+            snap-x snap-mandatory
+            scroll-smooth
+            scrollbar-hide">
+
+      <!-- CARD -->
+       <div onclick="openModal(35.00)"
+       class="min-w-[260px] bg-cream-200 rounded-xl shadow-md
+                  transform transition-all duration-300 ease-out
+                  hover:-translate-y-2 hover:shadow-2xl
+                  active:scale-95 cursor-pointer">
+
+        <img src="img/jusbuah.jpg"
+             class="h-40 w-full object-cover rounded-t-xl">
+
+        <div class="p-4">
+          <h3 class="font-semibold text-lg">Jus Buah</h3>
+          <p class="text-sm text-gray-500 mb-3">
+            YANG BELI PRINCESS
+          </p>
+
+          <div class="flex justify-between items-center">
+            <span class="font-bold">$35.00</span>
+            <button class="bg-green-800 text-white p-2 rounded">
+              Beli Sekarang
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD -->
+       <div onclick="openModal(15.00)"
+       class="min-w-[260px] bg-white rounded-xl shadow-md
+                  transform transition-all duration-300 ease-out
+                  hover:-translate-y-2 hover:shadow-2xl">
+
+        <img src="img/lemonmint.jpg"
+             class="h-40 w-full object-cover rounded-t-xl">
+
+        <div class="p-4">
+          <h3 class="font-semibold text-lg">Lemon Mint</h3>
+          <p class="text-sm text-gray-500 mb-3">
+            IZINNNNNNN
+          </p>
+
+          <div class="flex justify-between items-center">
+            <span class="font-bold">$15.00</span>
+            <button class="bg-green-800 text-white p-2 rounded">Beli Sekarang</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD -->
+       <div onclick="openModal(28.00)"
+      class="min-w-[260px] bg-white rounded-xl shadow-md
+                  transform transition-all duration-300 ease-out
+                  hover:-translate-y-2 hover:shadow-2xl">
+
+        <img src="img/tehmanis.jpg"
+             class="h-40 w-full object-cover rounded-t-xl">
+
+        <div class="p-4">
+          <h3 class="font-semibold text-lg">Teh Manis</h3>
+          <p class="text-sm text-gray-500 mb-3">
+            BELI GA!
+          </p>
+
+          <div class="flex justify-between items-center">
+            <span class="font-bold">$28.00</span>
+            <button class="bg-green-800 text-white p-2 rounded">Beli Sekarang</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD -->
+       <div onclick="openModal(38.00)"
+      class="min-w-[260px] bg-white rounded-xl shadow-md
+                  transform transition-all duration-300 ease-out
+                  hover:-translate-y-2 hover:shadow-2xl">
+
+        <img src="img/thaitea.jpg"
+             class="h-40 w-full object-cover rounded-t-xl">
+
+        <div class="p-4">
+          <h3 class="font-semibold text-lg">Thai Tea</h3>
+          <p class="text-sm text-gray-500 mb-3">
+            ENAK POKONYA MAH
+          </p>
+
+          <div class="flex justify-between items-center">
+            <span class="font-bold">$38.00</span>
+            <button class="bg-green-800 text-white p-2 rounded">Beli Sekarang</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OVERLAY -->
+<div id="modalBg"
+     class="fixed inset-0 bg-black/50 hidden items-center justify-center">
+
+  <!-- MODAL BOX -->
+  <div class="bg-white rounded-2xl w-[420px] p-6
+              scale-95 opacity-0
+              transition-all duration-300"
+       id="modalBox">
+
+    <!-- CLOSE -->
+    <button onclick="closeModal()"
+            class="absolute right-4 top-3 text-xl">✕</button>
+
+    <h2 class="text-xl font-bold mb-3">iZINNNN</h2>
+
+    <p class="text-gray-600 mb-4">
+      UHUYYYYYYY
+    </p>
+
+    <!-- PRICE + QTY -->
+    <div class="flex justify-between items-center mb-4">
+      <span id="priceText" class="text-2xl font-bold">$15.000</span>
+
+      <div class="flex items-center gap-3 border rounded-lg px-3 py-1">
+        <button onclick="dec()">-</button>
+        <span id="qty">1</span>
+        <button onclick="inc()">+</button>
+      </div>
+    </div>
+
+    <!-- INFO BADGES -->
+    <div class="grid grid-cols-3 gap-3 mb-5 text-sm text-center">
+      <div class="bg-gray-100 p-2 rounded-lg">⏱ 20 min</div>
+      <div class="bg-gray-100 p-2 rounded-lg">☕ Tanpa Es</div>
+      <div class="bg-gray-100 p-2 rounded-lg">🧊 Pakai es</div>
+    </div>
+
+    <!-- BUTTON -->
+    <button class="w-full bg-green-800 text-white py-3 rounded-xl">
+      Beli Sekarang
+    </button>
+
+  </div>
+</div>
+
+
+<script>
+let qty = 1
+let basePrice = 0
+
+function openModal(price){
+  basePrice = price
+  qty = 1
+  updateTotal()
+
+  document.getElementById("modalBg").classList.remove("hidden")
+  document.getElementById("modalBg").classList.add("flex")
+
+  setTimeout(()=>{
+    document.getElementById("modalBox")
+      .classList.remove("scale-95","opacity-0")
+    document.getElementById("modalBox")
+      .classList.add("scale-100","opacity-100")
+  },10)
+}
+
+function closeModal(){
+  document.getElementById("modalBox")
+    .classList.add("scale-95","opacity-0")
+
+  setTimeout(()=>{
+    document.getElementById("modalBg").classList.add("hidden")
+    document.getElementById("modalBg").classList.remove("flex")
+  },200)
+}
+
+function updateTotal(){
+  document.getElementById("qty").innerText = qty
+  document.getElementById("priceText").innerText =
+    "$" + (basePrice * qty).toFixed(2)
+}
+
+function inc(){ qty++; updateTotal() }
+function dec(){ if(qty>1){ qty--; updateTotal() } }
+</script>
+
+<script>
+function scrollRight(){
+  document.getElementById("menuScroll")
+    .scrollBy({left:300, behavior:'smooth'})
+}
+
+function scrollLeft(){
+  document.getElementById("menuScroll")
+    .scrollBy({left:-300, behavior:'smooth'})
+}
+</script>
+
+</section>
+
+<br>
+
+<section>
+<h2 class="text-3xl font-bold mb-8 text-center">Our Popular Menu</h2>
+
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+  <!-- CARD -->
+  <div class="bg-white rounded-xl shadow overflow-hidden cursor-pointe transition-all duration-300 ease-out
+            hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+    <img src="img/naspadpadang.jpg"
+         class="w-full h-40 object-cover">
+
+    <div class="p-4">
+      <div class="flex justify-between mb-2">
+        <h3 class="font-semibold">y</h3>
+      </div>
+      <p class="text-sm text-gray-500">
+        g
+      </p>
+
+      <div class="flex justify-between items-center mt-4">
+        <span class="font-bold">$35.00</span>
+        <button onclick="beli(35); event.stopPropagation()"  class="bg-green-800 text-white px-3 py-1 rounded">Beli Sekarang</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DUPLICATE -->
+  <div class="bg-white rounded-xl shadow overflow-hidden cursor-pointe transition-all duration-300 ease-out
+            hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+    <img src="img/naspadpadang.jpg"
+         class="w-full h-40 object-cover">
+    <div class="p-4">
+      <h3 class="font-semibold">ok</h3>
+      <p class="text-sm text-gray-500">iy</p>
+      <div class="flex justify-between mt-4">
+        <span class="font-bold">$15</span>
+        <button onclick="beli(15); event.stopPropagation()" class="bg-green-800 text-white px-3 py-1 rounded">Beli Sekarang</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow overflow-hidden cursor-pointe transition-all duration-300 ease-out
+            hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+    <img src="img/naspadpadang.jpg"
+         class="w-full h-40 object-cover">
+    <div class="p-4">
+      <h3 class="font-semibold">ok</h3>
+      <p class="text-sm text-gray-500">iy</p>
+      <div class="flex justify-between mt-4">
+        <span class="font-bold">$15</span>
+        <button onclick="beli(15); event.stopPropagation()" class="bg-green-800 text-white px-3 py-1 rounded">Beli Sekarang</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow overflow-hidden cursor-pointe transition-all duration-300 ease-out
+            hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+    <img src="img/naspadpadang.jpg"
+         class="w-full h-40 object-cover">
+    <div class="p-4">
+      <h3 class="font-semibold">ok</h3>
+      <p class="text-sm text-gray-500">iy</p>
+      <div class="flex justify-between mt-4">
+        <span class="font-bold">$15</span>
+        <button onclick="beli(15); event.stopPropagation()" class="bg-green-800 text-white px-3 py-1 rounded">Beli Sekarang</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow overflow-hidden cursor-pointe transition-all duration-300 ease-out
+            hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+    <img src="img/nasisi.jpg"
+         class="w-full h-40 object-cover">
+    <div class="p-4">
+      <h3 class="font-semibold">ok</h3>
+      <p class="text-sm text-gray-500">iy</p>
+      <div class="flex justify-between mt-4">
+        <span class="font-bold">$15</span>
+        <button onclick="beli(15); event.stopPropagation()" class="bg-green-800 text-white px-3 py-1 rounded">Beli Sekarang</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow overflow-hidden cursor-pointe transition-all duration-300 ease-out
+            hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+    <img src="img/nasisi.jpg"
+         class="w-full h-40 object-cover">
+    <div class="p-4">
+      <h3 class="font-semibold">ok</h3>
+      <p class="text-sm text-gray-500">iy</p>
+      <div class="flex justify-between mt-4">
+        <span class="font-bold">$15</span>
+        <button onclick="beli(15); event.stopPropagation()" class="bg-green-800 text-white px-3 py-1 rounded">Beli Sekarang</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow overflow-hidden cursor-pointe transition-all duration-300 ease-out
+            hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+    <img src="img/nasisi.jpg"
+         class="w-full h-40 object-cover">
+    <div class="p-4">
+      <h3 class="font-semibold">ok</h3>
+      <p class="text-sm text-gray-500">iy</p>
+      <div class="flex justify-between mt-4">
+        <span class="font-bold">$15</span>
+        <button onclick="beli(15); event.stopPropagation()" class="bg-green-800 text-white px-3 py-1 rounded">Beli Sekarang</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-xl shadow overflow-hidden cursor-pointe transition-all duration-300 ease-out
+            hover:-translate-y-2 hover:shadow-2xl active:scale-95">
+  <img src="img/nasisi.jpg" class="w-full h-40 object-cover">
+    <div class="p-4">
+      <h3 class="font-semibold">ok</h3>
+      <p class="text-sm text-gray-500">iy</p>
+      <div class="flex justify-between mt-4">
+        <span class="font-bold">$15</span>
+        <button onclick="beli(15); event.stopPropagation()" class="bg-green-800 text-white px-3 py-1 rounded">Beli Sekarang</button>
+      </div>
+    </div>
+  </div>
+
+</section>
+<script>
+function beli(harga){
+  openModal(harga)   
+}
+</script>
 </body>
 </html>
